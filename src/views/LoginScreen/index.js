@@ -1,5 +1,5 @@
 import { CommonActions } from '@react-navigation/routers';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Text, View } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import ButtonPrimary from '../../components/utils/ButtonPrimary.component';
@@ -8,10 +8,10 @@ import CenteredViewWithPadding from '../../components/utils/CenteredViewWithPadd
 import ReclamaLogo from '../../components/utils/ReclamaLogo.component';
 import SafeAreaViewDefault from '../../components/utils/SafeAreaViewDefault.component';
 import * as Constants from "../../constants/Constants";
+import * as Store from "../../store/store";
 
 export default function LoginScreen({navigation}) {
-    const [CPF, setCPF] = useState('');
-
+    const { CPF, setCPF } = useContext(Store.LoginContext);
     const onSubmit = async () => {
         const isEmailValid = () => { return /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/.test(CPF) };
         if (CPF && isEmailValid()) {

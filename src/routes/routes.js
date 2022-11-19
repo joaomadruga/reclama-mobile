@@ -6,9 +6,7 @@ import HomeRoutes from "./homeRoutes";
 export default function Routes() {
         return (
             <NavigationContainer>
-            <Store.LoginContext.Provider value={""}>
                 <HomeRoutes />
-            </Store.LoginContext.Provider>
             </NavigationContainer>
         )
 };

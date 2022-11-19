@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { TextInput } from 'react-native-paper';
 import * as Constants from "../../constants/Constants";
 
-export default function LargeInput({title, ...props}) {
-  const [inputText, setInputText] = useState("");
+export default function LargeInput({title, inputState, ...props}) {
+  const { inputText, setInputText, type } = inputState;
+
+  const handleChange = (value) => {
+    setInputText(prev => ({...prev, [type]: value}))
+  };
   return (
     <TextInput
     label={title}
@@ -13,7 +17,7 @@ export default function LargeInput({title, ...props}) {
     selectionColor={Constants.colors.gray[650]}
     activeUnderlineColor={Constants.colors.primary[900]}
     value={inputText}
-    onChangeText={text => setInputText(text)}
+    onChangeText={text => handleChange(text)}
     />
   );
 }

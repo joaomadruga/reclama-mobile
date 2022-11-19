@@ -7,6 +7,7 @@ import styled from 'styled-components/native';
 import { Linking, Text, View } from 'react-native';
 import ButtonPrimary from '../../../components/utils/ButtonPrimary.component';
 import { CommonActions } from '@react-navigation/routers';
+import codegenNativeCommands from 'react-native/Libraries/Utilities/codegenNativeCommands';
 
 const WhatsappButton = styled.TouchableOpacity`
     padding: 12px 60px;
@@ -24,9 +25,10 @@ const WhatsappButtonText = styled.Text`
     flex: 1;
 `
 
-export default function CreatedComplaint({navigation}) {
+export default function CreatedComplaint({navigation, route}) {
+    const {code, complaintFormsValue} = route.params;
     const sendWhatsappMensage = () => {
-        let whatsAppMsg = `Oi, passando pra te lembrar da carona! Ficou um valor de em aberto. Valeu!\n\n\n_OBS: valores calculados automaticamente pelo app Carplit!_`
+        let whatsAppMsg = `Oi, acabei de criar uma denúncia de ${complaintFormsValue.title} na ${complaintFormsValue.address}. Segue o código caso você queira acompanhar: *${code}*!\n\n\n_OBS: Código gerado pelo app reclama!_`
         let url = 'whatsapp://send?text=' + whatsAppMsg;
         Linking.openURL(url);
     }

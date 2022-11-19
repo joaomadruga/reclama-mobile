@@ -12,96 +12,101 @@ import CreatedComplaint from "../../views/HomeScreen/CreatedComplaint";
 import InsertCode from "../../views/HomeScreen/InsertCode";
 import DetailCompliant from "../../views/HomeScreen/DetailCompliant";
 import UrgentCompliant from "../../views/LoginScreen/UrgentCompliant";
+import { useEffect, useState } from "react";
+import * as Store from "../../store/store";
 
 const Stack = createNativeStackNavigator();
 
 export default function HomeRoutes() {
+    const [CPF, setCPF] = useState('');
+  
     return (
+      <Store.LoginContext.Provider value={{CPF, setCPF}}>
           <Stack.Navigator initialRouteName={"Login"} screenOptions={screenOptions} >
-            
-            <Stack.Screen
-              name="Login"
-              component={LoginScreen}
-              options={() => ({
-                headerShown: false
-              })}
-            />
-
-            <Stack.Screen
-              name="UrgentCompliant"
-              component={UrgentCompliant}
-              options={({ navigation }) => ({
-                headerTitle: 'Contatos de apoio',
-                title: 'Contatos de apoio',
-                headerLeft: () =>  ( 
-                <TouchableWithoutFeedback onPress={navigation.goBack}>
-                  <ImageWrapper style={{cursor: 'pointer'}} width={'24px'} height={'24px'} source={ArrowLeft} />
-                </TouchableWithoutFeedback>
-                )
-              })}
-            />
-
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={() => ({
-                headerShown: false
-              })}
-            />
-
-            <Stack.Screen
-              name="AddComplaint"
-              component={AddComplaint}
-              options={({ navigation }) => ({
-                headerTitle: 'Criar denúncia',
-                title: 'Criar denúncia',
-                headerLeft: () =>  ( 
-                <TouchableWithoutFeedback onPress={navigation.goBack}>
-                  <ImageWrapper style={{cursor: 'pointer'}} width={'24px'} height={'24px'} source={ArrowLeft} />
-                </TouchableWithoutFeedback>
-                )
-              })}
-            />
-
-            <Stack.Screen
-              name="CreatedComplaint"
-              component={CreatedComplaint}
-              options={({ navigation }) => ({
-                headerTitle: 'Denúncia criada com sucesso!',
-                title: 'Denúncia criada com sucesso!',
-                headerLeft: () => (
-                  <></>
-                )
-              })}
+              <Stack.Screen
+                name="Login"
+                component={LoginScreen}
+                options={() => ({
+                  headerShown: false
+                })}
               />
-            <Stack.Screen
-              name="InsertCode"
-              component={InsertCode}
-              options={({ navigation }) => ({
-                headerTitle: 'Inserir código',
-                title: 'Inserir código',
-                headerLeft: () =>  ( 
+
+              <Stack.Screen
+                name="UrgentCompliant"
+                component={UrgentCompliant}
+                options={({ navigation }) => ({
+                  headerTitle: 'Contatos de apoio',
+                  title: 'Contatos de apoio',
+                  headerLeft: () =>  ( 
                   <TouchableWithoutFeedback onPress={navigation.goBack}>
                     <ImageWrapper style={{cursor: 'pointer'}} width={'24px'} height={'24px'} source={ArrowLeft} />
                   </TouchableWithoutFeedback>
-                )
-              })}
-            />
-            <Stack.Screen
-              name="DetailCompliant"
-              component={DetailCompliant}
-              options={({ navigation }) => ({
-                headerTitle: 'Denúncias encerradas',
-                title: 'Denúncias encerradas',
-                headerLeft: () =>  ( 
+                  )
+                })}
+              />
+
+              <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={() => ({
+                  headerShown: false
+                })}
+              />
+
+              <Stack.Screen
+                name="AddComplaint"
+                component={AddComplaint}
+                options={({ navigation }) => ({
+                  headerTitle: 'Criar denúncia',
+                  title: 'Criar denúncia',
+                  headerLeft: () =>  ( 
                   <TouchableWithoutFeedback onPress={navigation.goBack}>
                     <ImageWrapper style={{cursor: 'pointer'}} width={'24px'} height={'24px'} source={ArrowLeft} />
                   </TouchableWithoutFeedback>
-                )
-              })}
-              
-            />
+                  )
+                })}
+              />
+
+              <Stack.Screen
+                name="CreatedComplaint"
+                component={CreatedComplaint}
+                options={({ navigation }) => ({
+                  headerTitle: 'Denúncia criada com sucesso!',
+                  title: 'Denúncia criada com sucesso!',
+                  headerLeft: () => (
+                    <></>
+                  )
+                })}
+                />
+              <Stack.Screen
+                name="InsertCode"
+                component={InsertCode}
+                options={({ navigation }) => ({
+                  headerTitle: 'Inserir código',
+                  title: 'Inserir código',
+                  headerLeft: () =>  ( 
+                    <TouchableWithoutFeedback onPress={navigation.goBack}>
+                      <ImageWrapper style={{cursor: 'pointer'}} width={'24px'} height={'24px'} source={ArrowLeft} />
+                    </TouchableWithoutFeedback>
+                  )
+                })}
+              />
+              <Stack.Screen
+                name="DetailCompliant"
+                component={DetailCompliant}
+                options={({ navigation }) => ({
+                  headerTitle: 'Denúncias encerradas',
+                  title: 'Denúncias encerradas',
+                  headerLeft: () =>  ( 
+                    <TouchableWithoutFeedback onPress={navigation.goBack}>
+                      <ImageWrapper style={{cursor: 'pointer'}} width={'24px'} height={'24px'} source={ArrowLeft} />
+                    </TouchableWithoutFeedback>
+                  )
+                })}
+                
+              />
           </Stack.Navigator>
+          </Store.LoginContext.Provider>
     );
   }
   

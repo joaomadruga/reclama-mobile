@@ -1,22 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import * as Constants from "../../constants/Constants";
 
-export default function LargeDropdown() {
+export default function LargeDropdown({ inputState }) {
+  const { inputText, setInputText } = inputState;
+  const [ value, setValue ] = useState(null)
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    {label: 'Queda de Energia', value: 'LowEnergy'},
-    {label: "Falta d'àgua", value: 'LowWater'},
-    {label: "Resgate de animais", value: 'AnimalRescue'},
-    {label: "Problemas estruturais", value: 'StructureProblems'},
-    {label: "Outros", value: 'Others'},
+    {label: "Problemas estruturais", value: 0},
+    {label: "Violência", value: 1},
+    {label: "Manutenção de ruas", value: 2},
+    {label: 'Queda de Energia', value: 3},
+    {label: "Acidentes", value: 4},
+    {label: "Resgate de animais", value: 5},
+    {label: "Outros", value: 6},
   ]);
 
+  const handleChange = (value) => {
+    setInputText(prev => ({...prev, ["type"]: value}))
+  };
+
+  useEffect(() => {
+    handleChange(value);
+  }, [value]);
   return (
     <DropDownPicker
       open={open}
-      value={value}
+      value={inputText}
       items={items}
       placeholder={"Selecione o tipo da denúncia"}
       setOpen={setOpen}

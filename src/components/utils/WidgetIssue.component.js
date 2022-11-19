@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import * as Constants from "../../constants/Constants";
 import LoadingIcon from "../../../assets/icons/LoadingIcon.png";
 import ClockIcon from "../../../assets/icons/clock-icon.png";
+import DoneIcon from "../../../assets/icons/DoneIcon.png";
 import ImageWrapper from '../ImageWrapper.component';
 import { View } from 'react-native';
 
@@ -32,16 +33,16 @@ const Subtitle = styled.Text`
     color: ${Constants.colors.gray[600]};
 `
 
-export function WidgetIssue({navigation}){
+export function WidgetIssue({navigation, item, title, subtitle, status}){
     return (
-        <WidgetIssueStyle onPress={() => navigation.navigate("DetailCompliant")}>
+        <WidgetIssueStyle onPress={() => navigation.navigate("DetailCompliant", {item})}>
             <>
                 <View>
-                    <Title>Buraco na br-101</Title>
+                    <Title>{title}</Title>
                     <Subtitle>
-                    <ImageWrapper source={ClockIcon} width={'18px'} height={'18px'} style={{marginTop: -1}}/>  20/01/22 às 14h</Subtitle>
+                    <ImageWrapper source={ClockIcon} width={'18px'} height={'18px'} style={{marginTop: -1}}/>  {subtitle}</Subtitle>
                 </View>
-                <ImageWrapper source={LoadingIcon} style={{cursor: 'pointer'}} width={'48px'} height={'48px'}/>
+                <ImageWrapper source={status === 0 ? LoadingIcon : DoneIcon} style={{cursor: 'pointer'}} width={'48px'} height={'48px'}/>
             </>
         </WidgetIssueStyle>
     )
