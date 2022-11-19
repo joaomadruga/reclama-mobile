@@ -12,14 +12,16 @@ import * as Constants from "../../../constants/Constants";
 
 export default function DetailCompliant({navigation, route}) {
     const {item} = route.params;
+    console.log('LA VAI')
+    console.log(item.titulo)
     return (
         <SafeAreaViewDefault>
             <ViewWithPadding style={{marginTop: 20}}>
-                <ButtonSecondary title={item.titulo} style={{alignSelf: 'left'}}/>
+                <ButtonSecondary title={item.titulo} style={{alignSelf: 'flex-start'}}/>
                 <Text style={{fontFamily: Constants.fontWeightConfig.Regular, color: "white", fontSize: 16, marginTop: 40, marginBottom: 28}}>Situação: 
                 <Text style={{color: Constants.colors.primary[900], fontFamily: Constants.fontWeightConfig.Bold}}> {item.status === 0 ? "Não concluída." : "Encerrada."}</Text></Text>
                 <Text style={{fontFamily: Constants.fontWeightConfig.Regular, color: "white", fontSize: 14}}>{item.descricao}</Text>
-                {item.status === 1 && item.atendente_id.comentario && <Text style={{fontFamily: Constants.fontWeightConfig.Regular, color: "white", fontSize: 14, marginTop: 12}}>{`${item.atendente_id.nome}:${item.atendente_id.comentario}`}</Text>}
+                {item.status === 1 && item.comentario && <Text style={{fontFamily: Constants.fontWeightConfig.Regular, color: "white", fontSize: 14, marginTop: 12}}>{`${item?.nome}:${item.comentario}`}</Text>}
             </ViewWithPadding>
         </SafeAreaViewDefault>
     )

@@ -54,8 +54,8 @@ function searchFilter(text) {
     const currentFilteredData = isLeftSelected ? setFilteredActiveComplains : setFilteredFinishedComplains;
     if (text) {
       const newData = currentData.filter((item) => {
-        const itemData = item.titulo
-          ? item.titulo.toUpperCase()
+        const itemData = item.id_denuncia.titulo
+          ? item.id_denuncia.titulo.toUpperCase()
           : "".toUpperCase();
         const textData = text.toUpperCase();
         return itemData.indexOf(textData) > -1;
@@ -70,7 +70,7 @@ function searchFilter(text) {
     return (
         <SafeAreaViewDefault>
             <ViewWithPadding>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 20, alignItems: 'center', marginBottom: 20}}>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 40, alignItems: 'center', marginBottom: 20}}>
                     <ReclamaLogo/>
                     <Text style={{color: "white", fontFamily: Constants.fontWeightConfig.Regular}} onPress={() => navigation.navigate("InsertCode")}>INSERIR CÓDIGO</Text>
                 </View>
@@ -91,7 +91,7 @@ function searchFilter(text) {
                     style={{marginBottom: 60}}
                     data={isLeftSelected ? filteredActiveComplains : filteredFinishedComplains}
                     renderItem={({ item, index }) => (
-                        <WidgetIssue item={item} navigation={navigation} title={item.titulo} subtitle={item.data_denuncia} status={item.status} />
+                        <WidgetIssue item={item.id_denuncia} navigation={navigation} title={item.id_denuncia.titulo} subtitle={item.id_denuncia.data_denuncia} status={item.id_denuncia.status} />
                     )}
                     />
                 <FAB
