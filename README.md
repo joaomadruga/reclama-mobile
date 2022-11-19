@@ -17,9 +17,9 @@ Para instalar o Dashboard do reclama, você precisa:
 
 Windows, Linux and macOS:
 ```
-$ git clone https://github.com/joaomadruga/recnplay-mobile
+$ git clone https://github.com/joaomadruga/reclama-mobile
 or
-$ git clone git@github.com:joaomadruga/recnplay-mobile.git
+$ git clone git@github.com:joaomadruga/reclama-mobile.git
 ```
 
 
@@ -28,7 +28,7 @@ $ git clone git@github.com:joaomadruga/recnplay-mobile.git
 Para usar você, precisa:
 Entrar no repositorio
 ```
-$ cd recnplay-mobile
+$ cd reclama-mobile
 ```
 Instalar dependências
 ```
@@ -45,7 +45,7 @@ $ expo start
 
 ## 📫 Contribuindo para o repositorio
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
-Para contribuir para <recnplay-mobile>, siga esses passos:
+Para contribuir para <reclama-mobile>, siga esses passos:
 
 1. Fork o repositório.
 2. Crie uma nova branch: `git checkout -b <branch_name>`.
